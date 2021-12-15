@@ -1,8 +1,9 @@
 import React, { MouseEvent } from 'react';
 import './App.css';
+import Letters from './test-board.json'
 
 class App extends React.Component {
-  prueba(event: MouseEvent) {
+  selectTile(event: MouseEvent) {
     event.preventDefault();
     const size = 60;
     const selectItem = event.currentTarget as HTMLButtonElement;
@@ -23,24 +24,20 @@ class App extends React.Component {
     });
   }
   render() {
+    const characters = Letters.board;
+    let result:string[] = [];
+    let ch ;
+    while (result.length < characters.length){
+        ch = characters[Math.floor(Math.random() * characters.length)];
+        if (!result.includes(ch)){
+            result.push(ch);
+        }
+    }
     return (
       <div id='table'>
-        <button id='0' onClick={this.prueba}></button>
-        <button id="1" onClick={this.prueba}></button>
-        <button id="2" onClick={this.prueba}></button>
-        <button id="3" onClick={this.prueba}></button>
-        <button id='4' onClick={this.prueba}></button>
-        <button id="5" onClick={this.prueba}></button>
-        <button id="6" onClick={this.prueba}></button>
-        <button id="7" onClick={this.prueba}></button>
-        <button id='8' onClick={this.prueba}></button>
-        <button id="9" onClick={this.prueba}></button>
-        <button id="10" onClick={this.prueba}></button>
-        <button id="11" onClick={this.prueba}></button>
-        <button id='12' onClick={this.prueba}></button>
-        <button id="13" onClick={this.prueba}></button>
-        <button id="14" onClick={this.prueba}></button>
-        <button id="15" onClick={this.prueba}></button>
+        {result.map((l, index) => (
+          <button key={index} onClick={this.selectTile}>{l}</button>
+        ))}
       </div>
     );
   }

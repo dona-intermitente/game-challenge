@@ -6,6 +6,9 @@
 }
 
 #table button {
+    color: white;
+    font-weight: bold;
+    font-family: 'Rubik', sans-serif;
     cursor: pointer;
     border: 2px solid Crimson;
     border-radius: 5px;
