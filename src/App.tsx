@@ -1,6 +1,7 @@
 import React, { MouseEvent } from 'react';
 import './App.css';
 import Letters from './test-board.json'
+import Dictionary from './dictionary.json'
 
 class App extends React.Component {
   selectTile(event: MouseEvent) {
@@ -9,9 +10,17 @@ class App extends React.Component {
     const selectItem = event.currentTarget as HTMLButtonElement;
     const selectAxes = selectItem.getBoundingClientRect();
     const tableItem = document.getElementById("table");
+    const words = Dictionary.words;
     const inputText = document.getElementById("text");
-    (inputText as HTMLInputElement).value += selectItem?.childNodes[0].nodeValue;
-    console.log(selectItem?.childNodes[0].nodeValue)
+    const inputValue = inputText as HTMLInputElement;
+    const valid = document.getElementById("validate")
+    const validItem = valid as HTMLElement;
+
+    inputValue.value += selectItem?.childNodes[0].nodeValue;
+    if ( words.includes(inputValue.value.toLowerCase()) ) {
+      validItem.innerHTML = "valid";
+      validItem.style.opacity = "100%";
+    }
 
     tableItem?.childNodes.forEach(e => {
       const element = e as HTMLButtonElement;
@@ -22,7 +31,7 @@ class App extends React.Component {
         element.disabled = true;
       } else {
         element.disabled = false;
-        selectItem.classList.add('select');
+        selectItem.classList.add("select");
       }
     });
   }
@@ -32,9 +41,7 @@ class App extends React.Component {
     let ch ;
     while (result.length < characters.length){
         ch = characters[Math.floor(Math.random() * characters.length)];
-        if (!result.includes(ch)){
-            result.push(ch);
-        }
+        result.push(ch);
     }
     return (
       <>
@@ -44,6 +51,7 @@ class App extends React.Component {
           ))}
         </div>
         <input id="text" type="text" disabled></input>
+        <div id="validate">invalid</div>
       </>
     );
   }

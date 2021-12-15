@@ -32,3 +32,8 @@
     font-weight: bold;
     font-family: 'Rubik', sans-serif;
 }
+
+#validate {
+    opacity: 50%;
+    color: gray;
+}
