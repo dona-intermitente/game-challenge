@@ -9,6 +9,9 @@ class App extends React.Component {
     const selectItem = event.currentTarget as HTMLButtonElement;
     const selectAxes = selectItem.getBoundingClientRect();
     const tableItem = document.getElementById("table");
+    const inputText = document.getElementById("text");
+    (inputText as HTMLInputElement).value += selectItem?.childNodes[0].nodeValue;
+    console.log(selectItem?.childNodes[0].nodeValue)
 
     tableItem?.childNodes.forEach(e => {
       const element = e as HTMLButtonElement;
@@ -19,7 +22,7 @@ class App extends React.Component {
         element.disabled = true;
       } else {
         element.disabled = false;
-        selectItem.classList.add('select')
+        selectItem.classList.add('select');
       }
     });
   }
@@ -34,11 +37,14 @@ class App extends React.Component {
         }
     }
     return (
-      <div id='table'>
-        {result.map((l, index) => (
-          <button key={index} onClick={this.selectTile}>{l}</button>
-        ))}
-      </div>
+      <>
+        <div id='table'>
+          {result.map((l, index) => (
+            <button key={index} onClick={this.selectTile}>{l}</button>
+          ))}
+        </div>
+        <input id="text" type="text" disabled></input>
+      </>
     );
   }
 }
