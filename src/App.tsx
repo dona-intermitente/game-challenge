@@ -45,7 +45,8 @@ class App extends React.Component {
     }
     return (
       <>
-        <div id='table'>
+        <a href="location.reload()">x</a>
+        <div id="table">
           {result.map((l, index) => (
             <button key={index} onClick={this.selectTile}>{l}</button>
           ))}
