@@ -1,3 +1,21 @@
+#root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#reset {
+    color: gray;
+    font-size: 28px;
+    margin-left: 50%;
+}
+
+.contentText {
+    position: relative;
+}
+
 #table {
     display: grid;
     gap: 20px;
@@ -36,4 +54,7 @@
 #validate {
     opacity: 50%;
     color: gray;
+    position: absolute;
+    top: 25%;
+    right: 10px;
 }

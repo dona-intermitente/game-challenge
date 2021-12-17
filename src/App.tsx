@@ -45,14 +45,16 @@ class App extends React.Component {
     }
     return (
       <>
-        <a href="location.reload()">x</a>
+        <a id="reset" href="location.reload()">x</a>
         <div id="table">
           {result.map((l, index) => (
             <button key={index} onClick={this.selectTile}>{l}</button>
           ))}
         </div>
-        <input id="text" type="text" disabled></input>
-        <div id="validate">invalid</div>
+        <div className="contentText">
+          <input id="text" type="text" disabled></input>
+          <div id="validate">invalid</div>
+        </div>
       </>
     );
   }
